@@ -8,16 +8,23 @@ const client = new MusicClient({
 	prefix: process.env.DISCORD_PREFIX
 });
 
+// read command files for all commands
 const commandFiles = readdirSync(join(__dirname, 'commands')).filter(file => file.endsWith('.js'));
 for (const file of commandFiles) {
 	const command = require(join(__dirname, 'commands', `${file}`));
 	client.commands.set(command.name, command);
 }
 
+// log ready when bot starts
 client.once('ready', () => console.log('READY!'));
+
+// wait for message event
 client.on('message', message => {
+	// if message doesnt not start with prefix, then return
 	if (!message.content.startsWith(client.config.prefix) || message.author.bot) return;
+	// slice prefix off message, then put each arg into array. / +/ can be multiple white spaces
 	const args = message.content.slice(client.config.prefix.length).split(/ +/);
+	// shift removes the first arg
 	const commandName = args.shift().toLowerCase();
 	const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 	if (!command) return;
