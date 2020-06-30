@@ -1,6 +1,6 @@
 module.exports = {
 	name: 'resume',
-	description: 'Resume command.',
+	description: 'Resume that was paused.',
 	cooldown: 5,
 	execute(message) {
 		const serverQueue = message.client.queue.get(message.guild.id);

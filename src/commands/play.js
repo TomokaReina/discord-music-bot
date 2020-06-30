@@ -3,7 +3,7 @@ const ytdl = require('ytdl-core');
 
 module.exports = {
 	name: 'play',
-	description: 'Play command.',
+	description: 'Play a song from youtube (no playlist function yet).',
 	usage: '[youtube url]',
 	args: true,
 	cooldown: 5,

@@ -1,6 +1,6 @@
 module.exports = {
 	name: 'stop',
-	description: 'Stop command.',
+	description: 'Stops the bot and removes all the songs in queue.',
 	cooldown: 5,
 	execute(message) {
 		const { channel } = message.member.voice;

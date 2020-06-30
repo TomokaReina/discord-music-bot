@@ -1,6 +1,6 @@
 module.exports = {
 	name: 'queue',
-	description: 'Queue command.',
+	description: 'Queue a song if a song is already playing.',
 	cooldown: 5,
 	execute(message) {
 		const serverQueue = message.client.queue.get(message.guild.id);
